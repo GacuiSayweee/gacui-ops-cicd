@@ -11,14 +11,14 @@ pipeline{
 //             type: 'PT_BRANCH',
 //             sortMode: 'DESCENDING_SMART',
 //             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-        virtualEnv name: 'virtualEnvTag', defaultValue: ${env.ENV_TAG}
+        virtualEnv name: 'VIRTUAL_ENV_TAG', defaultValue: '${env.ENV_TAG}'
     }
     stages {
         stage('Deploy') {
             steps{
                 script {
                     def concatenatedString = pipelineTest(str1: 'Fuck', str2: 'You', str3: 'Bitch!')
-                    echo "select branch is ${params.VERSION}"
+                    echo "select branch is ${params.VIRTUAL_ENV_TAG}"
 //                     echo "select check is ${params.CHECK}"
                 }
                 pipelineTest str1: 'Hello', str2: ' The ', str3: 'World'
