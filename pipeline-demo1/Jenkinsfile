@@ -5,7 +5,13 @@ pipeline{
         WEEE_APP = "central-activity"
     }
     parameters {
-        virtualEnv defaultValue : 'dev'
+//         gitParameter branchFilter: 'origin/(.*)',
+//             defaultValue: 'master',
+//             name: 'VERSION',
+//             type: 'PT_BRANCH',
+//             sortMode: 'DESCENDING_SMART',
+//             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
+        virtualEnv defaultValue: 'dev', name: 'virtualEnvTag'
     }
     stages {
         stage('Deploy') {
