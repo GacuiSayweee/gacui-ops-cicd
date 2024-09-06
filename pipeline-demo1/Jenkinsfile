@@ -4,13 +4,22 @@ pipeline{
         ENV_TAG = "dev"
         WEEE_APP = "central-activity"
     }
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)',
+            defaultValue: 'master',
+            name: 'VERSION',
+            type: 'PT_BRANCH',
+            sortMode: 'DESCENDING_SMART',
+            useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
+        mavenSnapshotCheck name: 'CHECK'
+    }
     stages {
         stage('Deploy') {
             steps{
                 script {
                     def concatenatedString = pipelineTest(str1: 'Fuck', str2: 'You', str3: 'Bitch!')
-
-
+                    echo "select branch is ${params.VERSION}"
+                    echo "select check is ${params.CHECK}"
                 }
                 pipelineTest str1: 'Hello', str2: ' The ', str3: 'World'
                 echo 'Hello World'
