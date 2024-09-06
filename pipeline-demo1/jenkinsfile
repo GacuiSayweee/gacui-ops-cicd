@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    environment {
+        ENV_TAG = "dev"
+        WEEE_APP = "central-activity"
+    }
+    stages {
+        stage('Deploy') {
+            steps{
+                script {
+                    def concatenatedString = pipelineTest(str1: 'Fuck', str2: 'You', str3: 'Bitch!')
+
+
+                }
+                pipelineTest str1: 'Hello', str2: ' The ', str3: 'World'
+                echo 'Hello World'
+            }
+        }
+    }
+}
