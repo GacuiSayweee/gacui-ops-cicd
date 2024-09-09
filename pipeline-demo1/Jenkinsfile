@@ -18,9 +18,11 @@ pipeline{
             steps{
                 script {
                     deploymentEnhance(appname: "${env.WEEE_APP}")
+                    sh """
                     echo "cat deploy.yaml --->>>"
-                    cat deploy.yaml
+                    cat /var/jenkins_home/workspace/pipeline-demo1/deploy.yaml
                     echo "cat deploy.yaml ---<<<"
+                    """
                 }
 
             }
