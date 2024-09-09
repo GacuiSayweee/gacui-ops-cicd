@@ -18,7 +18,7 @@ pipeline{
             steps{
                 script {
                     def concatenatedString = pipelineTest(str1: 'Fuck', str2: 'You', str3: 'Bitch!')
-                    echo "select branch is ${params.VIRTUAL_ENV_TAG111}"
+                    echo "select branch is ${params.VIRTUAL_ENV_TAG}"
 //                     echo "select check is ${params.CHECK}"
                 }
                 pipelineTest str1: 'Hello', str2: ' The ', str3: 'World'
