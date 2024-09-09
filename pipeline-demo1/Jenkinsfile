@@ -6,12 +6,12 @@ pipeline{
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
-            defaultValue: "${env.ENV_TAG}",
+            defaultValue: 'master',
             name: 'VERSION',
             type: 'PT_BRANCH',
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-//         virtualEnv name: 'VIRTUAL_ENV_TAG', baseTag: "${env.ENV_TAG}"
+        virtualEnv name: 'VIRTUAL_ENV_TAG', baseTag: env.ENV_TAG
     }
     stages {
         stage('Deploy') {
