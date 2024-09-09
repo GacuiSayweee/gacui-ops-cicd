@@ -17,12 +17,12 @@ pipeline{
         stage('Deploy') {
             steps{
                 script {
-                    def concatenatedString = deploymentEnhance(appname: "${env.WEEE_APP}")
-                    echo "select branch is ${params.VIRTUAL_ENV_TAG}"
-//                     echo "select check is ${params.CHECK}"
+                    deploymentEnhance(appname: "${env.WEEE_APP}")
+                    echo "cat deploy.yaml --->>>"
+                    cat deploy.yaml
+                    echo "cat deploy.yaml ---<<<"
                 }
-                deploymentEnhance appname: env.WEEE_APP
-                echo 'Hello World'
+
             }
         }
     }
