@@ -6,7 +6,7 @@ pipeline{
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
-            defaultValue: "${env.ENV_TAG}"
+            defaultValue: "${env.ENV_TAG}",
             name: 'VERSION',
             type: 'PT_BRANCH',
             sortMode: 'DESCENDING_SMART',
