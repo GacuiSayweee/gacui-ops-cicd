@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment {
         ENV_TAG = "dev"
-        WEEE_APP = "central-activity"
+        WEEE_APP = "pipeline-demo1"
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
@@ -17,7 +17,7 @@ pipeline{
         stage('Deploy') {
             steps{
                 script {
-                    def concatenatedString = pipelineTest(str1: 'Fuck', str2: 'You', str3: 'Bitch!')
+                    def concatenatedString = deploymentEnhance(appname: "${env.WEEE_APP}")
                     echo "select branch is ${params.VIRTUAL_ENV_TAG}"
 //                     echo "select check is ${params.CHECK}"
                 }

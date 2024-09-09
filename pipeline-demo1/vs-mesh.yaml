@@ -1,0 +1,19 @@
+
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ec-item-mesh
+  namespace: ec
+spec:
+  hosts:
+  - ec-item
+  http:
+  - match:
+    - uri:
+        prefix: /ec/item/
+    rewrite:
+      uri: /item/
+    route:
+    - destination:
+        host: ec-item
+    timeout: 2s

@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: ec-item
+  namespace: ec
+spec:
+  host: ec-item
+  trafficPolicy:
+    connectionPool:
+      http:
+        http1MaxPendingRequests: 1024
+        maxRequestsPerConnection: 10
+      tcp:
+        maxConnections: 100
+    loadBalancer:
+      simple: LEAST_CONN
+

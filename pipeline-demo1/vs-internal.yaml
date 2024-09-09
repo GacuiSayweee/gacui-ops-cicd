@@ -1,0 +1,537 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ec-item-internal
+  namespace: ec
+spec:
+  gateways:
+  - istio-system/api-internal-ingressgateway
+  hosts:
+  - internal-api.dev.sayweee.net
+  - api.internal.dev.sayweee.net
+  http:
+  - match:
+    - uri:
+        prefix: /ec/item/activity/
+    rewrite:
+      uri: /item/activity/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/catalogue/fresh_daily
+    rewrite:
+      uri: /item/catalogue/fresh_daily
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/top_ranking
+    rewrite:
+      uri: /item/top_ranking
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/ai/message
+    rewrite:
+      uri: /item/ai/message
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/coupons/checkout
+    rewrite:
+      uri: /so/coupons/list
+    route:
+    - destination:
+        host: ec-so.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/coupons/redeem
+    rewrite:
+      uri: /so/coupons/redeem/v2
+    route:
+    - destination:
+        host: ec-so.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/catalogue/static_catalogues
+    rewrite:
+      uri: /item/catalogue/static_catalogues
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/search/hot_keywords
+    rewrite:
+      uri: /item/search/hot_keywords
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/categories
+    rewrite:
+      uri: /item/catalogue/categories
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/promotion/
+    rewrite:
+      uri: /item/promotion/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/lightning_deals/
+    rewrite:
+      uri: /item/lightning_deals/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/model_page/
+    rewrite:
+      uri: /item/model_page/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/recommend/home/preference
+    rewrite:
+      uri: /item/v1/recommend/home/preference
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/recommend/preference
+    rewrite:
+      uri: /item/v1/recommend/home/preference
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/recommend/home/breakfast
+    rewrite:
+      uri: /item/v1/recommend/home/breakfast
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/items/recommend
+    rewrite:
+      uri: /item/v1/recommend/home/preference
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/items/statistics
+    rewrite:
+      uri: /item/items/statistics
+    route:
+      - destination:
+          host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v1/recommend/
+    rewrite:
+      uri: /item/v1/recommend/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v1/ds_collection/
+    rewrite:
+      uri: /item/v1/ds_collection/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/items/detail
+    rewrite:
+      uri: /item/items/detail
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 3s
+  - match:
+    - uri:
+        prefix: /ec/item/admin
+    rewrite:
+      uri: /item/admin
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/store
+    rewrite:
+      uri: /item/store
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/noresult
+    rewrite:
+      uri: /item/noresult
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/actuator/
+    rewrite:
+      uri: /item/actuator/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v2/search
+    rewrite:
+      uri: /item/v2/search
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v2/items/rewards_day
+    rewrite:
+      uri: /item/v2/items/rewards_day
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v2/items/
+    rewrite:
+      uri: /item/v2/items/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v2/
+    rewrite:
+      uri: /item/v2/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/cuisines/
+    rewrite:
+      uri: /item/cuisines/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - headers:
+        version:
+          regex: .+ec-item:PRE.+
+      uri:
+        prefix: /ec/item/search/suggestion
+    rewrite:
+      uri: /item/search/suggestion
+    route:
+    - destination:
+        host: ec-item-pre.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/search/suggestion
+    rewrite:
+      uri: /item/search/suggestion
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v4/
+    rewrite:
+      uri: /item/v4/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v1/customer/view/
+    rewrite:
+      uri: /item/v1/customer/view/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - queryParams:
+        filter_sub_category:
+          exact: perference
+      uri:
+        prefix: /ec/item/v3/search/catalogue
+    rewrite:
+      uri: /item/v1/recommend/preference
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/search/catalogue
+    rewrite:
+      uri: /item/v3/search/catalogue
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/search/rtg
+    rewrite:
+      uri: /mkpl/v2/search/home
+    route:
+    - destination:
+        host: ec-mkpl.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/search/v2/post/rtg
+    rewrite:
+      uri: /mkpl/v2/search/home
+    route:
+    - destination:
+        host: ec-mkpl.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/search
+    rewrite:
+      uri: /item/v3/search
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/common/all_sales_org
+    rewrite:
+      uri: /item/common/all_sales_org
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/me/favorites/list
+    rewrite:
+      uri: /item/me/favorites/list
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/me/favorites/
+    rewrite:
+      uri: /item/me/favorites/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/themes
+    rewrite:
+      uri: /item/v3/themes
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/items/restock/tips
+    rewrite:
+      uri: /item/items/restock/tips
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v1/content/feed/home/search
+    rewrite:
+      uri: /item/v1/content/feed/home/search
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 3s
+  - match:
+    - uri:
+        prefix: /ec/item/v1/content/
+    rewrite:
+      uri: /item/v1/content/
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/invite_friends/get_active_referral_event
+    rewrite:
+      uri: /invite_friends/get_active_referral_event
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/order_share/sharabele_order_data
+    rewrite:
+      uri: /order_share/api_get_sharabele_order_data
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+  - match:
+    - uri:
+        prefix: /ec/mkt/coupon/collect
+    rewrite:
+      uri: /portal/api_user_email_collection
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+  - match:
+    - uri:
+        prefix: /ec/mkt/activity/special_share
+    rewrite:
+      uri: /growth/share/lighting
+    route:
+    - destination:
+        host: ec-growth
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/activity/lightning_deals/remind
+    rewrite:
+      uri: /item/lightning_deals/remind
+    route:
+    - destination:
+        host: ec-item.ec.svc.cluster.local
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/banner
+    rewrite:
+      uri: /growth/banner/get_banner
+    route:
+    - destination:
+        host: ec-growth
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt/version/check
+    rewrite:
+      uri: /growth/version/check
+    route:
+    - destination:
+        host: ec-growth
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/mkt
+    rewrite:
+      uri: /api/v3/mkt
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+  - match:
+    - uri:
+        prefix: /ec/item/popup/favorite
+    rewrite:
+      uri: /product_favorite/api_product_for_popup
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/popup/resale
+    rewrite:
+      uri: /resale/api_product_for_popup
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/seo/meta
+    rewrite:
+      uri: /api_seo_v1/meta
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/v3/
+    rewrite:
+      uri: /api/v3/item/
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 2s
+  - match:
+    - uri:
+        prefix: /ec/item/
+    rewrite:
+      uri: /api/v3/item/
+    route:
+    - destination:
+        host: internal-php.dev.sayweee.com
+    timeout: 3s
