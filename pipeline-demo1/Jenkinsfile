@@ -23,12 +23,12 @@ pipeline{
                     echo "base : ${ENV_TAG}"
                     echo "value : ${${VIRTUAL_ENV_TAG}}"
                     """
-                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${VIRTUAL_ENV_TAG}")
-                    sh """
-                    echo "cat deploy.yaml --->>>"
-                    cat deploy.yaml
-                    echo "cat deploy.yaml ---<<<"
-                    """
+//                     deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${VIRTUAL_ENV_TAG}")
+//                     sh """
+//                     echo "cat deploy.yaml --->>>"
+//                     cat deploy.yaml
+//                     echo "cat deploy.yaml ---<<<"
+//                     """
                 }
 
             }
