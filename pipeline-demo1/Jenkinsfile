@@ -1,5 +1,4 @@
-def GLOBAL_ENV_TAG = "dev"
-def GLOBAL_VIRTUAL_ENV_TAG = "x-canary-tag11111"
+def VIRTUAL_ENV_TAG
 pipeline{
     agent any
     environment {
@@ -15,7 +14,7 @@ pipeline{
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
         virtualEnv name: 'x-canary-tag', baseTag: "dev"
-        string(name: 'PARAM_VARIABLE', defaultValue: "${GLOBAL_VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
+        string(name: 'PARAM_VARIABLE', defaultValue: "${VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
 
     }
     stages {
