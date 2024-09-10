@@ -1,8 +1,9 @@
 pipeline{
     agent any
     environment {
-        ENV_TAG = "dev"
+        ENV_TAG = "devvvv"
         WEEE_APP = "pipeline-demo1"
+        VIRTUAL_ENV_TAG = "x-canary-tag111"
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
@@ -11,13 +12,13 @@ pipeline{
             type: 'PT_BRANCH',
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-        virtualEnv name: 'x-canary-tag', baseTag: '${env.ENV_TAG}'
+        virtualEnv name: '${env.VIRTUAL_ENV_TAG}', baseTag: '${env.ENV_TAG}'
     }
     stages {
         stage('Deploy') {
             steps{
                 script {
-                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: 'x-canary-tag')
+                    deploymentEnhance(appname: '${env.WEEE_APP}', virtualEnvTag: '${env.VIRTUAL_ENV_TAG}')
                     sh """
                     echo "cat deploy.yaml --->>>"
                     cat /var/jenkins_home/workspace/pipeline-demo1/deploy.yaml
