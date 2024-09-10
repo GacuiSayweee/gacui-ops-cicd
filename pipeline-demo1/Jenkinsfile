@@ -14,11 +14,11 @@ pipeline{
 //             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
 //         virtualEnv name: "${env.VIRTUAL_ENV_TAG}", baseTag: "${env.ENV_TAG}"
 //     }
-    parameters {
-        properties([
-           virtualEnv(name: "${env.VIRTUAL_ENV_TAG}", baseTag: "${env.ENV_TAG}")
+    properties([
+        parameters([
+            virtualEnv(name: "${env.VIRTUAL_ENV_TAG}", baseTag: "${env.ENV_TAG}")
         ])
-    }
+    ])
     stages {
         stage('Deploy') {
             steps{
