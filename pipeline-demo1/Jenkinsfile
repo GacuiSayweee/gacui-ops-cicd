@@ -1,8 +1,8 @@
 def VIRTUAL_ENV_TAG = "x-canary-tag"
+def ENV_TAG = "devvvv"
 pipeline{
     agent any
     environment {
-        ENV_TAG = "devvvv"
         WEEE_APP = "pipeline-demo1"
     }
     parameters {
@@ -12,18 +12,16 @@ pipeline{
             type: 'PT_BRANCH',
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-        virtualEnv name: 'x-canary-tag', baseTag: "dev"
-        string(name: 'PARAM_VARIABLE', defaultValue: "${env.VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
-
+        virtualEnv name: "${VIRTUAL_ENV_TAG}", baseTag: "${ENV_TAG}"
     }
     stages {
         stage('Deploy') {
             steps{
                 script {
-                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${env.VIRTUAL_ENV_TAG}")
+                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${VIRTUAL_ENV_TAG}")
                     sh """
                     echo "cat deploy.yaml --->>>"
-                    cat /var/jenkins_home/workspace/pipeline-demo1/deploy.yaml
+                    cat deploy.yaml
                     echo "cat deploy.yaml ---<<<"
                     """
                 }
