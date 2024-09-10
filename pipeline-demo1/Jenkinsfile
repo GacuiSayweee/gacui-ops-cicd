@@ -18,7 +18,12 @@ pipeline{
         stage('Deploy') {
             steps{
                 script {
-                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${params.VIRTUAL_ENV_TAG}")
+                    sh """
+                    echo "tag : ${VIRTUAL_ENV_TAG}"
+                    echo "base : ${ENV_TAG}"
+                    echo "value : ${${VIRTUAL_ENV_TAG}}"
+                    """
+                    deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${VIRTUAL_ENV_TAG}")
                     sh """
                     echo "cat deploy.yaml --->>>"
                     cat deploy.yaml
