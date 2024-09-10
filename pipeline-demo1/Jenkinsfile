@@ -15,9 +15,9 @@ pipeline{
 //         virtualEnv name: 'x-canary-tag', baseTag: "dev"
 //     }
     options{
-        parameters{
-            virtualEnv(name: 'x-canary-tag', baseTag: 'dev')
-        }
+        parameters([
+            virtualEnv(name: 'x-canary-tag', baseTag: 'dev'),
+        ])
     }
     stages {
         stage('Deploy') {
