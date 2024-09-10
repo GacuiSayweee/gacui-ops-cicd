@@ -25,7 +25,7 @@ pipeline{
                     echo "value : ${value}"
                     echo "VIRTUAL_ENV_TAG : ${VIRTUAL_ENV_TAG}"
                     echo "ENV_TAG : ${ENV_TAG}"
-                    echo "value : params["${VIRTUAL_ENV_TAG}"]"
+                    echo "value : ${params["${VIRTUAL_ENV_TAG}"]}"
 //                     deploymentEnhance(appname: "${env.WEEE_APP}", virtualEnvTag: "${VIRTUAL_ENV_TAG}")
 //                     sh """
 //                     echo "cat deploy.yaml --->>>"
