@@ -3,7 +3,7 @@ pipeline{
     environment {
         ENV_TAG = "devvvv"
         WEEE_APP = "pipeline-demo1"
-        VIRTUAL_ENV_TAG = "x-canary-tag111"
+        VIRTUAL_ENV_TAG = "x-canary-tag"
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
@@ -12,7 +12,7 @@ pipeline{
             type: 'PT_BRANCH',
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-        virtualEnv name: '${env.VIRTUAL_ENV_TAG}', baseTag: "${env.ENV_TAG}"
+        virtualEnv name: 'x-canary-tag', baseTag: "dev"
     }
     stages {
         stage('Deploy') {
