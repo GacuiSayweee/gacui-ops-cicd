@@ -18,7 +18,7 @@ pipeline{
         stage('Deploy') {
             steps{
                 script {
-                    def tag = VIRTUAL_ENV_TAG
+                    def tag = ${VIRTUAL_ENV_TAG}
                     echo "tag : ${VIRTUAL_ENV_TAG}"
                     echo "base : ${ENV_TAG}"
                     echo "value : ${tag}"
