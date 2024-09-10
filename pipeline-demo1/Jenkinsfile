@@ -3,6 +3,7 @@ def ENV_TAG = "devvvv"
 pipeline{
     agent any
     environment {
+        VIRTUAL_ENV_TAGG = "x-canary-tag"
         WEEE_APP = "pipeline-demo1"
     }
     parameters {
@@ -18,7 +19,7 @@ pipeline{
         stage('Deploy') {
             steps{
                 script {
-                    def tag = env.VIRTUAL_ENV_TAG
+                    def tag = env.VIRTUAL_ENV_TAGG
                     echo "tag : ${VIRTUAL_ENV_TAG}"
                     echo "base : ${ENV_TAG}"
                     echo "value : ${tag}"
