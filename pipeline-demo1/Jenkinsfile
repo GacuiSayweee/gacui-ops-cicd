@@ -5,19 +5,16 @@ pipeline{
         WEEE_APP = "pipeline-demo1"
         VIRTUAL_ENV_TAG = "x-canary-tag"
     }
-//     parameters {
-//         gitParameter branchFilter: 'origin/(.*)',
-//             defaultValue: 'master',
-//             name: 'VERSION',
-//             type: 'PT_BRANCH',
-//             sortMode: 'DESCENDING_SMART',
-//             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
-//         virtualEnv name: 'x-canary-tag', baseTag: "dev"
-//     }
-    options{
-        parameters([
-            virtualEnv(name: 'x-canary-tag', baseTag: 'dev'),
-        ])
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)',
+            defaultValue: 'master',
+            name: 'VERSION',
+            type: 'PT_BRANCH',
+            sortMode: 'DESCENDING_SMART',
+            useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
+        virtualEnv name: 'x-canary-tag', baseTag: "dev"
+        string(name: 'PARAM_VARIABLE', defaultValue: "${VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
+
     }
     stages {
         stage('Deploy') {
