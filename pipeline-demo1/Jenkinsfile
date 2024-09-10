@@ -13,7 +13,7 @@ pipeline{
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
         virtualEnv name: 'x-canary-tag', baseTag: "dev"
-        string(name: 'PARAM_VARIABLE', defaultValue: "${VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
+        string(name: 'PARAM_VARIABLE', defaultValue: "XXXXXX", description: 'Description of the parameter variable')
 
     }
     stages {
