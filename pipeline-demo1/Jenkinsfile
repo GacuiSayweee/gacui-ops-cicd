@@ -1,10 +1,9 @@
-def VIRTUAL_ENV_TAG
+def VIRTUAL_ENV_TAG = "x-canary-tag"
 pipeline{
     agent any
     environment {
         ENV_TAG = "devvvv"
         WEEE_APP = "pipeline-demo1"
-        VIRTUAL_ENV_TAG = "x-canary-tag"
     }
     parameters {
         gitParameter branchFilter: 'origin/(.*)',
@@ -14,7 +13,7 @@ pipeline{
             sortMode: 'DESCENDING_SMART',
             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
         virtualEnv name: 'x-canary-tag', baseTag: "dev"
-        string(name: 'PARAM_VARIABLE', defaultValue: "${VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
+        string(name: 'PARAM_VARIABLE', defaultValue: "${env.VIRTUAL_ENV_TAG}", description: 'Description of the parameter variable')
 
     }
     stages {
