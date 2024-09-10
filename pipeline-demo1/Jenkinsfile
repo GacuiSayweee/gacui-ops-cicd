@@ -14,7 +14,7 @@ pipeline{
 //             useRepository: "https://github.com/GacuiSayweee/gacui-ops-cicd.git"
 //         virtualEnv name: 'x-canary-tag', baseTag: "dev"
 //     }
-    properties([
+    options([
         parameters(
             [
                 virtualEnv(name: 'x-canary-tag', baseTag: 'dev'),
