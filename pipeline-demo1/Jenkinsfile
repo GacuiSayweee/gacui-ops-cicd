@@ -20,7 +20,7 @@ pipeline{
             steps{
                 script {
                     def tag = env.VIRTUAL_ENV_TAGG
-                    def value = env["${tag}"]
+                    def value = params["${tag}"]
                     echo "tag : ${VIRTUAL_ENV_TAG}"
                     echo "base : ${ENV_TAG}"
                     echo "value : ${value}"
